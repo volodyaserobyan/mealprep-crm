@@ -78,3 +78,29 @@ export const deleteCategoriesHelpCenter = url => {
             })
     }
 }
+
+export const deleteQuestionsHelpCenter = url => {
+    return dispatch => {
+        dispatch({
+            type: All.FETCHHELP
+        });
+        return fetch(url, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(response => response.json())
+            .then(deleteQuestions => {
+                dispatch({
+                    type: All.DELETEQUESTIONSHELP,
+                    deleteQuestions: deleteQuestions
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: All.ERRORHELP,
+                    data: error
+                })
+            })
+    }
+}

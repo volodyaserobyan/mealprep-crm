@@ -27,7 +27,7 @@ const Help = props => {
 
     useEffect(() => {
         props.getCategoriesHelp(HELPCENTERCATGURL)
-    }, [props.helpDELETE])
+    }, [props.helpDELETECAT, props.helpDELETEQUEST])
 
     if (isAdd) {
         return (
@@ -59,7 +59,9 @@ const Help = props => {
                     </div>
                     <div className="Help-Cont-Wrap-Context">
                         {props.helpGET.categories.map(item =>
-                            props.match.params.id == item._id && <HelpGeneral key={item._id} item={item} />)}
+                            props.match.params.id == item._id && <HelpGeneral key={item._id}
+                                 item={item}
+                                 id={props.match.params.id} />)}
                     </div>
                 </div>
                 <button onClick={() => setIsAdd(true)}>Add Help</button>
@@ -71,7 +73,8 @@ const Help = props => {
 const mapStateToProps = state => {
     return {
         helpGET: state.helpReducer.getCategories,
-        helpDELETE: state.helpReducer.deleteCategories
+        helpDELETECAT: state.helpReducer.deleteCategories,
+        helpDELETEQUEST: state.helpReducer.deleteQuestions
     }
 }
 

@@ -18,24 +18,46 @@ const AddHelp = props => {
     const [question, setQuestion] = useState('')
     const [questionLabel, setQuestionLabel] = useState('')
     const [answer, setAnswer] = useState('')
+    const [id, setId] = useState(props.location.query)
     const [isSuccess, setIsSuccess] = useState(false)
+
+    const getTitle = () => {
+        props.helpGET.categories.map(item => {
+            if (props.location.query == item._id) {
+                setTitle(item.title)
+                setTitleLabel(item.title.split(' ').join('_').toLowerCase())
+                // return item.title
+            }
+        })
+    }
+    title == '' && getTitle()
 
     const handelSubmit = e => {
         e.preventDefault()
 
-        const sendObj = {
-            title: title,
-            label: titleLabel,
-            questions: [
-                {
-                    title: question,
-                    label: questionLabel,
-                    answere: answer
-                }
-            ]
+        if (id == undefined) {
+            const sendObj = {
+                title: title,
+                label: titleLabel,
+                questions: [
+                    {
+                        title: question,
+                        label: questionLabel,
+                        answere: answer
+                    }
+                ]
+            }
+            props.postCategoriesHelp(HELPCENTERCATGURL, sendObj)
+        }
+        else {
+            const sendObj = {
+                title: question,
+                answere: answer,
+                label: questionLabel
+            }
+            props.postCategoriesHelp(`${HELPCENTERCATGURL}/${id}/questions`, sendObj)
         }
 
-        props.postCategoriesHelp(HELPCENTERCATGURL, sendObj)
     }
 
     useEffect(() => {
@@ -44,6 +66,8 @@ const AddHelp = props => {
         }
     }, [props.helpPost])
 
+    console.log(props)
+
     if (isSuccess) {
         return (
             <Redirect to={{
@@ -51,6 +75,8 @@ const AddHelp = props => {
             }} />
         )
     }
+
+    console.log(title, 'sss')
 
     return (
         <section className='AddHelp'>

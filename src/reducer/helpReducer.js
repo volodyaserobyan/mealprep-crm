@@ -3,7 +3,8 @@ import {
     FETCHHELP,
     ERRORHELP,
     POSTCATEGORIESHELP,
-    DELETECATEGORIESHELP
+    DELETECATEGORIESHELP,
+    DELETEQUESTIONSHELP
 } from '../const/ConstTypes'
 
 const INITIAL_STATE = {
@@ -38,6 +39,13 @@ export const helpReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 deleteCategories: action.deleteCategories,
+                isFetching: false
+            }
+        }
+        case DELETEQUESTIONSHELP: {
+            return {
+                ...state,
+                deleteQuestions: action.deleteQuestions,
                 isFetching: false
             }
         }
