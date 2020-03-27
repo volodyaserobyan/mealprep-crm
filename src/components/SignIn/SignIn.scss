@@ -1,0 +1,190 @@
+.SignIn {
+    width: 100%;
+    height: calc(100vh - 88px);
+    padding: 0 16px;
+    min-height: 660px;
+    // background-image: url("../../assets/images/Image.png");
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // flex-direction: column;
+  
+    &-Cont {
+      max-width: 524px;
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0px 8px 32px rgba(22, 22, 22, 0.05);
+      border-radius: 4px;
+      padding: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+  
+      h1 {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 28px;
+        text-align: center;
+        color: #161616;
+        margin-bottom: 8px;
+      }
+  
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+  
+        .forget {
+          font-size: 13px;
+          line-height: 20px;
+          text-decoration-line: underline;
+          color: #f58436;
+          text-align: left;
+          width: 100%;
+          margin-top: 8px;
+        }
+        > a {
+          width: 100%;
+          text-align: center;
+          > p {
+            font-size: 13px;
+            line-height: 20px;
+            text-align: center;
+            color: #c11a11;
+          }
+        }
+      }
+  
+      &-Mail,
+      &-Password {
+        background: #ffffff;
+        border: 1px solid rgba(22, 22, 22, 0.22);
+        box-sizing: border-box;
+        border-radius: 2px;
+        padding: 12px 16px;
+        font-size: 13px;
+        line-height: 16px;
+        color: rgba(22, 22, 22, 0.48);
+        width: 100%;
+        margin-top: 16px;
+      }
+  
+      &-Submit {
+        background: #9aca3c;
+        border-radius: 2px;
+        padding: 12px 0px;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        width: 100%;
+        line-height: 16px;
+        text-align: center;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #ffffff;
+        border: 0;
+        margin-top: 16px;
+      }
+  
+      &-Line {
+        width: 100%;
+        margin-top: 24px;
+        height: 2px;
+        background: rgba(22, 22, 22, 0.22);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+  
+        span {
+          font-style: normal;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 26px;
+          text-align: center;
+          color: rgba(22, 22, 22, 0.48);
+          background-color: #fff;
+          padding: 0px 8px;
+        }
+      }
+  
+      span {
+        width: 100%;
+        .Login-Cont-Fb {
+          background: #3b5998;
+          border-radius: 2px;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 12px 0px;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 13px;
+          line-height: 16px;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          color: #ffffff;
+          border: none;
+          margin-top: 36px;
+    
+          img {
+            margin-right: 11px;
+          }
+        }
+      }
+  
+      &-Google {
+        background: #4285f4;
+        border-radius: 2px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 0px;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 16px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #ffffff;
+        border: none;
+        margin-top: 16px;
+  
+        img {
+          margin-right: 11px;
+        }
+      }
+  
+      &-Member {
+        margin-top: 24px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+  
+        p {
+          font-style: normal;
+          font-weight: normal;
+          font-size: 15px;
+          line-height: 22px;
+          text-align: center;
+          color: rgba(22, 22, 22, 0.74);
+        }
+  
+        .link {
+          color: #f58436;
+          margin-left: 4px;
+        }
+      }
+    }
+  }
+  

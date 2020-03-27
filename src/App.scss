@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.innerWrap {
+  max-width: 1176px;
+  width: -webkit-calc(100% - 32px);
+  width: -moz-calc(100% - 32px);
+  width: calc(100% - 32px);
+  margin: 0 auto;
+}
+
+.App {
+  position: relative;
+}
