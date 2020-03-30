@@ -9,7 +9,7 @@ const Aside = props => {
             <div className='Aside-Cont'>
                 <ul>
                     <NavLink to={{
-                        pathname: `${process.env.PUBLIC_URL}/dashboard/help/${props.help.categories[0]._id}`
+                        pathname: `${process.env.PUBLIC_URL}/dashboard/help/${props.help[0]._id}`
                     }}>
                         <li>Help</li>
                     </NavLink>

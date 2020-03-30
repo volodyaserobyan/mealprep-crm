@@ -2,21 +2,24 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { HELPCENTERCATGURL } from '../../../const/ConstUrl'
-import { deleteQuestionsHelpCenter, postCategoriesHelpCenter } from '../../../action/Action'
+import { deleteQuestionsHelpCenter, postCategoriesHelpCenter, patchOrderHelpCenter } from '../../../action/Action'
 import { Input } from '../../Form'
 import './HelpGeneral.scss'
 
 const HelpGeneral = props => {
 
-    const [id, setId] = useState('')
-    const [edit, isEdit] = useState(false)
+    const [id, setId] = useState({
+        id: '',
+        isOpen: false
+    })
+    const [edit, isEdit] = useState({
+        id: '',
+        isOpen: false
+    })
+    const [order, setOrder] = useState('')
+    const [orderValue, setOrderValue] = useState('')
     const [title, setTitle] = useState('')
     const [answer, setAnswer] = useState('')
-
-    const handleClick = e => {
-        console.log(e, 'sss')
-        setId(e._id)
-    }
 
     const deleteQuest = id => {
         props.deleteQuestHelp(`${HELPCENTERCATGURL}/questions/${id}`)
@@ -31,21 +34,46 @@ const HelpGeneral = props => {
             answere: answer
         }
 
-        props.postQuest(`${HELPCENTERCATGURL}/questions/${id}`, sendObj)
+        props.postQuest(`${HELPCENTERCATGURL}/questions/${id}`, sendObj, true)
+    }
 
+    const changeOrderQuestion = (id, e) => {
+        e.preventDefault()
+
+        const sendObj = {
+            newIndex: orderValue
+        }
+        props.patchOrderHelp(`${HELPCENTERCATGURL}/questions/${id}/order`, sendObj)
     }
 
     return (
         <section className='HelpGeneral'>
-            {props.item.questions.map(item =>
+            {props.item.questions.map((item, index) =>
                 <div key={item._id}>
                     <div>
-                        <h1 onClick={() => handleClick(item)}>
+                        <h1 onClick={() => setId({ id: item._id, isOpen: !id.isOpen })}>
                             {item.title}
                         </h1>
+                        <p onClick={() => setOrder(item._id)}>{index}</p>
+                        {order == item._id &&
+                            <form onSubmit={e => changeOrderQuestion(item._id, e)}>
+                                <Input
+                                    type='text'
+                                    name='order'
+                                    placeholder='Order'
+                                    value={orderValue}
+                                    onChange={e => setOrderValue(e.target.value)}
+                                />
+                                <Input
+                                    type='submit'
+                                    className="Submit"
+                                    value='SAVE'
+                                />
+                            </form>
+                        }
                         <button onClick={() => deleteQuest(item._id)}>Delete</button>
-                        <button onClick={() => isEdit(!edit)}>Edit</button>
-                        {edit &&
+                        <button onClick={() => isEdit({ id: item._id, isOpen: !edit.isOpen })}>Edit</button>
+                        {edit.id == item._id && edit.isOpen &&
                             <form onSubmit={(e) => editQuest(item._id, e)}>
                                 <Input
                                     type='text'
@@ -68,7 +96,7 @@ const HelpGeneral = props => {
                                 />
                             </form>}
                     </div>
-                    {item._id == id &&
+                    {item._id == id.id && id.isOpen &&
                         <p>{item.answere}</p>
                     }
                 </div>
@@ -87,7 +115,8 @@ const HelpGeneral = props => {
 const mapDispatchToProps = dispatch => {
     return {
         deleteQuestHelp: url => dispatch(deleteQuestionsHelpCenter(url)),
-        postQuest: (url, body) => dispatch(postCategoriesHelpCenter(url, body))
+        postQuest: (url, body, isPatch) => dispatch(postCategoriesHelpCenter(url, body, isPatch)),
+        patchOrderHelp: (url, body) => dispatch(patchOrderHelpCenter(url, body))
     }
 }
 

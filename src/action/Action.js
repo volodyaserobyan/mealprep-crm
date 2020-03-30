@@ -26,13 +26,13 @@ export const getCategoriesHelpCenter = url => {
     }
 }
 
-export const postCategoriesHelpCenter = (url, body) => {
+export const postCategoriesHelpCenter = (url, body, isPatch) => {
     return dispatch => {
         dispatch({
             type: All.FETCHHELP
         });
         return fetch(url, {
-            method: 'POST',
+            method: isPatch ? 'PATCH' : 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
@@ -68,6 +68,33 @@ export const deleteCategoriesHelpCenter = url => {
                 dispatch({
                     type: All.DELETECATEGORIESHELP,
                     deleteCategories: deleteCategories
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: All.ERRORHELP,
+                    data: error
+                })
+            })
+    }
+}
+
+export const patchOrderHelpCenter = (url, body) => {
+    return dispatch => {
+        dispatch({
+            type: All.FETCHHELP
+        });
+        return fetch(url, {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        }).then(response => response.json())
+            .then(patchOrder => {
+                dispatch({
+                    type: All.PATCHORDERHELP,
+                    patchOrder: patchOrder
                 })
             })
             .catch(error => {

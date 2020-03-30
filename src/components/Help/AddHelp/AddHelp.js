@@ -22,7 +22,7 @@ const AddHelp = props => {
     const [isSuccess, setIsSuccess] = useState(false)
 
     const getTitle = () => {
-        props.helpGET.categories.map(item => {
+        props.helpGET.map(item => {
             if (props.location.query == item._id) {
                 setTitle(item.title)
                 setTitleLabel(item.title.split(' ').join('_').toLowerCase())
@@ -71,7 +71,7 @@ const AddHelp = props => {
     if (isSuccess) {
         return (
             <Redirect to={{
-                pathname: `${process.env.PUBLIC_URL}/dashboard/help/${props.help.categories[0]._id}`
+                pathname: `${process.env.PUBLIC_URL}/dashboard/help/${props.help[0]._id}`
             }} />
         )
     }

@@ -20,7 +20,7 @@ const SignIn = props => {
     if (isSuccess) {
         return (
             <Redirect to={{
-                pathname: `${process.env.PUBLIC_URL}/dashboard/help/${props.help.categories[0]._id}`
+                pathname: `${process.env.PUBLIC_URL}/dashboard/help/${props.help[0]._id}`
             }} />
         )
     }
