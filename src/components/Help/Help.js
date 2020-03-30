@@ -10,7 +10,8 @@ import { connect } from 'react-redux'
 import {
     getCategoriesHelpCenter,
     deleteCategoriesHelpCenter,
-    patchOrderHelpCenter
+    patchOrderHelpCenter,
+    postCategoriesHelpCenter
 } from '../../action/Action'
 import { HELPCENTERCATGURL } from '../../const/ConstUrl'
 import HelpGeneral from './HelpGeneral'
@@ -22,15 +23,19 @@ let _ = require('lodash')
 const Help = props => {
 
     const [isAdd, setIsAdd] = useState(false)
+    const [catId, setCatId] = useState('')
+    const [isOpenModal, setIsOpenModal] = useState(false)
     const [order, setOrder] = useState('')
     const [value, setValue] = useState('')
+    const [categoryValue, setCategoryValue] = useState('')
 
     useEffect(() => {
         props.getCategoriesHelp(HELPCENTERCATGURL)
     }, [
         props.helpDELETECAT,
         props.helpDELETEQUEST,
-        props.helpORDER
+        props.helpORDER,
+        props.helpPOST
     ])
 
     const handleSubmit = (id, e) => {
@@ -40,6 +45,16 @@ const Help = props => {
             newIndex: value
         }
         props.patchOrderHelp(`${HELPCENTERCATGURL}/${id}/order`, sendObj)
+    }
+
+    const changeTitle = (id, e) => {
+        e.preventDefault()
+
+        const sendObj = {
+            title: categoryValue,
+            label: categoryValue.split(' ').join('_').toLowerCase()
+        }
+        props.patchCategories(`${HELPCENTERCATGURL}/${id}`, sendObj, true)
     }
 
     if (isAdd) {
@@ -84,6 +99,10 @@ const Help = props => {
                                 <button onClick={() => {
                                     props.deleteCategoriesHelp(`${HELPCENTERCATGURL}/${item._id}`)
                                 }}>Delete</button>
+                                <button onClick={() => {
+                                    setIsOpenModal(true)
+                                    setCatId(item._id)
+                                }}>Edit</button>
                             </div>
                         )}
                     </div>
@@ -93,6 +112,21 @@ const Help = props => {
                                 item={item}
                                 id={props.match.params.id} />)}
                     </div>
+                    {isOpenModal &&
+                        <form className='modal' onSubmit={e => changeTitle(catId, e)}>
+                            <div>
+                                <Input
+                                    type='text'
+                                    name='title'
+                                    placeholder='Title'
+                                    value={categoryValue}
+                                    onChange={e => setCategoryValue(e.target.value)} />
+                                <Input
+                                    type='submit'
+                                    className="Submit"
+                                    value='Change' />
+                            </div>
+                        </form>}
                 </div>
                 <button onClick={() => setIsAdd(true)}>Add Help</button>
             </div>
@@ -103,6 +137,7 @@ const Help = props => {
 const mapStateToProps = state => {
     return {
         helpGET: state.helpReducer.getCategories,
+        helpPOST: state.helpReducer.postCategories,
         helpORDER: state.helpReducer.patchOrder,
         helpDELETECAT: state.helpReducer.deleteCategories,
         helpDELETEQUEST: state.helpReducer.deleteQuestions
@@ -113,7 +148,8 @@ const mapDispatchToProps = dispatch => {
     return {
         getCategoriesHelp: url => dispatch(getCategoriesHelpCenter(url)),
         deleteCategoriesHelp: url => dispatch(deleteCategoriesHelpCenter(url)),
-        patchOrderHelp: (url, body) => dispatch(patchOrderHelpCenter(url, body))
+        patchOrderHelp: (url, body) => dispatch(patchOrderHelpCenter(url, body)),
+        patchCategories: (url, body, isPatch) => dispatch(postCategoriesHelpCenter(url, body, isPatch))
     }
 }
 

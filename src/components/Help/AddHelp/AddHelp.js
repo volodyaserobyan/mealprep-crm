@@ -61,7 +61,7 @@ const AddHelp = props => {
     }
 
     useEffect(() => {
-        if (props.helpPost === 'help categorie created' && _.isEmpty(props.helpGET)) {
+        if (!_.isEmpty(props.helpGET) && !_.isEmpty(props.helpPost)) {
             setIsSuccess(true)
         }
     }, [props.helpPost])
@@ -71,7 +71,7 @@ const AddHelp = props => {
     if (isSuccess) {
         return (
             <Redirect to={{
-                pathname: `${process.env.PUBLIC_URL}/dashboard/help/${props.help[0]._id}`
+                pathname: `${process.env.PUBLIC_URL}/dashboard/help/${props.helpGET[0]._id}`
             }} />
         )
     }
@@ -132,8 +132,7 @@ const AddHelp = props => {
 const mapStateToProps = state => {
     return {
         helpGET: state.helpReducer.getCategories,
-        helpPost: state.helpReducer.postCategories != undefined &&
-            state.helpReducer.postCategories.message
+        helpPost: state.helpReducer.postCategories
     }
 }
 

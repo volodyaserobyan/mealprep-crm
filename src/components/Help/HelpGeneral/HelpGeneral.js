@@ -27,8 +27,17 @@ const HelpGeneral = props => {
 
     const editQuest = (id, e) => {
         e.preventDefault()
-
-        const sendObj = {
+        let sendObj = {}
+        if (answer == '') {
+            sendObj = {
+                title: title,
+                label: title.split(' ').join('_').toLowerCase()
+            }
+        } else if (title == '') {
+            sendObj = {
+                answere: answer
+            }
+        } else sendObj = {
             title: title,
             label: title.split(' ').join('_').toLowerCase(),
             answere: answer
