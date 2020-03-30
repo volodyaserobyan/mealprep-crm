@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/static/css/main.69eda509.chunk.css",
-    "main.js": "/static/js/main.405c99f0.chunk.js",
-    "main.js.map": "/static/js/main.405c99f0.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.963094e8.js",
-    "runtime-main.js.map": "/static/js/runtime-main.963094e8.js.map",
-    "static/js/2.44bdf90f.chunk.js": "/static/js/2.44bdf90f.chunk.js",
-    "static/js/2.44bdf90f.chunk.js.map": "/static/js/2.44bdf90f.chunk.js.map",
-    "static/css/3.97b84efc.chunk.css": "/static/css/3.97b84efc.chunk.css",
-    "static/js/3.0a8adaea.chunk.js": "/static/js/3.0a8adaea.chunk.js",
-    "static/js/3.0a8adaea.chunk.js.map": "/static/js/3.0a8adaea.chunk.js.map",
-    "static/js/4.a0979074.chunk.js": "/static/js/4.a0979074.chunk.js",
-    "static/js/4.a0979074.chunk.js.map": "/static/js/4.a0979074.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.09698fac37efd4722a03805bfa3c6f42.js": "/precache-manifest.09698fac37efd4722a03805bfa3c6f42.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/3.97b84efc.chunk.css.map": "/static/css/3.97b84efc.chunk.css.map",
-    "static/css/main.69eda509.chunk.css.map": "/static/css/main.69eda509.chunk.css.map",
-    "static/js/2.44bdf90f.chunk.js.LICENSE.txt": "/static/js/2.44bdf90f.chunk.js.LICENSE.txt",
-    "static/js/4.a0979074.chunk.js.LICENSE.txt": "/static/js/4.a0979074.chunk.js.LICENSE.txt"
+    "main.css": "/projects/react/mealprep-crm/build/static/css/main.69eda509.chunk.css",
+    "main.js": "/projects/react/mealprep-crm/build/static/js/main.2dc9d845.chunk.js",
+    "main.js.map": "/projects/react/mealprep-crm/build/static/js/main.2dc9d845.chunk.js.map",
+    "runtime-main.js": "/projects/react/mealprep-crm/build/static/js/runtime-main.d833fd8d.js",
+    "runtime-main.js.map": "/projects/react/mealprep-crm/build/static/js/runtime-main.d833fd8d.js.map",
+    "static/js/2.44bdf90f.chunk.js": "/projects/react/mealprep-crm/build/static/js/2.44bdf90f.chunk.js",
+    "static/js/2.44bdf90f.chunk.js.map": "/projects/react/mealprep-crm/build/static/js/2.44bdf90f.chunk.js.map",
+    "static/css/3.97b84efc.chunk.css": "/projects/react/mealprep-crm/build/static/css/3.97b84efc.chunk.css",
+    "static/js/3.32bcb208.chunk.js": "/projects/react/mealprep-crm/build/static/js/3.32bcb208.chunk.js",
+    "static/js/3.32bcb208.chunk.js.map": "/projects/react/mealprep-crm/build/static/js/3.32bcb208.chunk.js.map",
+    "static/js/4.a0979074.chunk.js": "/projects/react/mealprep-crm/build/static/js/4.a0979074.chunk.js",
+    "static/js/4.a0979074.chunk.js.map": "/projects/react/mealprep-crm/build/static/js/4.a0979074.chunk.js.map",
+    "index.html": "/projects/react/mealprep-crm/build/index.html",
+    "precache-manifest.24f569bf7157e663ea4f559a4dfbf15c.js": "/projects/react/mealprep-crm/build/precache-manifest.24f569bf7157e663ea4f559a4dfbf15c.js",
+    "service-worker.js": "/projects/react/mealprep-crm/build/service-worker.js",
+    "static/css/3.97b84efc.chunk.css.map": "/projects/react/mealprep-crm/build/static/css/3.97b84efc.chunk.css.map",
+    "static/css/main.69eda509.chunk.css.map": "/projects/react/mealprep-crm/build/static/css/main.69eda509.chunk.css.map",
+    "static/js/2.44bdf90f.chunk.js.LICENSE.txt": "/projects/react/mealprep-crm/build/static/js/2.44bdf90f.chunk.js.LICENSE.txt",
+    "static/js/4.a0979074.chunk.js.LICENSE.txt": "/projects/react/mealprep-crm/build/static/js/4.a0979074.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.963094e8.js",
+    "static/js/runtime-main.d833fd8d.js",
     "static/js/2.44bdf90f.chunk.js",
     "static/css/main.69eda509.chunk.css",
-    "static/js/main.405c99f0.chunk.js"
+    "static/js/main.2dc9d845.chunk.js"
   ]
 }
