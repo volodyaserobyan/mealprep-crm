@@ -15,7 +15,11 @@ import {
 } from '../../action/Action'
 import { HELPCENTERCATGURL } from '../../const/ConstUrl'
 import HelpGeneral from './HelpGeneral'
-import { Input } from '../Form'
+import {
+    Input,
+    Button
+} from '../Form'
+import { EditCat } from '../Modal'
 import './Help.scss'
 
 let _ = require('lodash')
@@ -25,9 +29,11 @@ const Help = props => {
     const [isAdd, setIsAdd] = useState(false)
     const [catId, setCatId] = useState('')
     const [isOpenModal, setIsOpenModal] = useState(false)
-    const [order, setOrder] = useState('')
+    const [order, setOrder] = useState({
+        id: '',
+        isActive: false
+    })
     const [value, setValue] = useState('')
-    const [categoryValue, setCategoryValue] = useState('')
 
     useEffect(() => {
         props.getCategoriesHelp(HELPCENTERCATGURL)
@@ -47,16 +53,6 @@ const Help = props => {
         props.patchOrderHelp(`${HELPCENTERCATGURL}/${id}/order`, sendObj)
     }
 
-    const changeTitle = (id, e) => {
-        e.preventDefault()
-
-        const sendObj = {
-            title: categoryValue,
-            label: categoryValue.split(' ').join('_').toLowerCase()
-        }
-        props.patchCategories(`${HELPCENTERCATGURL}/${id}`, sendObj, true)
-    }
-
     if (isAdd) {
         return (
             <Redirect to={{
@@ -72,37 +68,39 @@ const Help = props => {
                 <div className="Help-Cont-Wrap">
                     <div className="Help-Cont-Wrap-Menu">
                         {props.helpGET.map(item =>
-                            <div key={item._id}>
+                            <div className='Help-Cont-Wrap-Menu-Items' key={item._id}>
                                 <NavLink to={{
                                     pathname: `${process.env.PUBLIC_URL}/dashboard/help/${item._id}`,
                                 }}
                                     activeClassName='isActive'>
                                     <p>{item.title}</p>
-                                    <p onClick={() => setOrder(item._id)}>{item.orderIndex}</p>
+                                    <p onClick={() => setOrder({ id: item._id, isActive: !order.isActive })}>Index` {item.orderIndex}</p>
                                 </NavLink>
-                                {order == item._id &&
+                                {order.id == item._id && order.isActive &&
                                     <form onSubmit={e => handleSubmit(item._id, e)}>
                                         <Input
                                             type='text'
                                             name='order'
                                             placeholder='Order'
-                                            value={order.value}
-                                            onChange={e => {
-                                                console.log(e.target.value)
-                                                setValue(e.target.value)
-                                            }} />
+                                            value={value}
+                                            onChange={e => setValue(e.target.value)} />
                                         <Input
                                             type='submit'
                                             className="Submit"
                                             value='ADD' />
                                     </form>}
-                                <button onClick={() => {
-                                    props.deleteCategoriesHelp(`${HELPCENTERCATGURL}/${item._id}`)
-                                }}>Delete</button>
-                                <button onClick={() => {
-                                    setIsOpenModal(true)
-                                    setCatId(item._id)
-                                }}>Edit</button>
+                                <div className='Help-Cont-Wrap-Menu-Items-Edit'>
+                                    <Button
+                                        onClick={() => props.deleteCategoriesHelp(`${HELPCENTERCATGURL}/${item._id}`)}
+                                        value='Delete'
+                                        className='Help-Cont-Wrap-Menu-Items-Edit_delete' />
+                                    <Button
+                                        onClick={() => {
+                                            setIsOpenModal(true)
+                                            setCatId(item._id)
+                                        }}
+                                        value='Edit' />
+                                </div>
                             </div>
                         )}
                     </div>
@@ -112,23 +110,14 @@ const Help = props => {
                                 item={item}
                                 id={props.match.params.id} />)}
                     </div>
-                    {isOpenModal &&
-                        <form className='modal' onSubmit={e => changeTitle(catId, e)}>
-                            <div>
-                                <Input
-                                    type='text'
-                                    name='title'
-                                    placeholder='Title'
-                                    value={categoryValue}
-                                    onChange={e => setCategoryValue(e.target.value)} />
-                                <Input
-                                    type='submit'
-                                    className="Submit"
-                                    value='Change' />
-                            </div>
-                        </form>}
+                    {isOpenModal && <EditCat
+                        closeCat={() => setIsOpenModal(false)}
+                        id={catId} />
+                    }
                 </div>
-                <button onClick={() => setIsAdd(true)}>Add Help</button>
+                <Button
+                    value='Add Help'
+                    onClick={() => setIsAdd(true)} />
             </div>
         </section>
     )

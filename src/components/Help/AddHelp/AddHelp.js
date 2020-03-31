@@ -20,13 +20,13 @@ const AddHelp = props => {
     const [answer, setAnswer] = useState('')
     const [id, setId] = useState(props.location.query)
     const [isSuccess, setIsSuccess] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
 
     const getTitle = () => {
         props.helpGET.map(item => {
             if (props.location.query == item._id) {
                 setTitle(item.title)
                 setTitleLabel(item.title.split(' ').join('_').toLowerCase())
-                // return item.title
             }
         })
     }
@@ -62,11 +62,13 @@ const AddHelp = props => {
 
     useEffect(() => {
         if (!_.isEmpty(props.helpGET) && !_.isEmpty(props.helpPost)) {
-            setIsSuccess(true)
+            if (props.helpPost.error_code == undefined) {
+                setIsSuccess(true)
+            } else {
+                setErrorMessage(props.helpPost.message)
+            }
         }
     }, [props.helpPost])
-
-    console.log(props)
 
     if (isSuccess) {
         return (
@@ -76,10 +78,9 @@ const AddHelp = props => {
         )
     }
 
-    console.log(title, 'sss')
-
     return (
         <section className='AddHelp'>
+            {errorMessage !== '' && <p>{errorMessage}</p>}
             <form onSubmit={handelSubmit}>
                 <Input
                     type='text'

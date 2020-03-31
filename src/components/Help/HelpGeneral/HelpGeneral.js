@@ -2,8 +2,15 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { HELPCENTERCATGURL } from '../../../const/ConstUrl'
-import { deleteQuestionsHelpCenter, postCategoriesHelpCenter, patchOrderHelpCenter } from '../../../action/Action'
-import { Input } from '../../Form'
+import {
+    deleteQuestionsHelpCenter,
+    postCategoriesHelpCenter,
+    patchOrderHelpCenter
+} from '../../../action/Action'
+import {
+    Input,
+    Button
+} from '../../Form'
 import './HelpGeneral.scss'
 
 const HelpGeneral = props => {
@@ -16,7 +23,10 @@ const HelpGeneral = props => {
         id: '',
         isOpen: false
     })
-    const [order, setOrder] = useState('')
+    const [order, setOrder] = useState({
+        id: '',
+        isActive: false
+    })
     const [orderValue, setOrderValue] = useState('')
     const [title, setTitle] = useState('')
     const [answer, setAnswer] = useState('')
@@ -58,13 +68,13 @@ const HelpGeneral = props => {
     return (
         <section className='HelpGeneral'>
             {props.item.questions.map((item, index) =>
-                <div key={item._id}>
+                <div className='HelpGeneral-Item' key={item._id}>
                     <div>
                         <h1 onClick={() => setId({ id: item._id, isOpen: !id.isOpen })}>
                             {item.title}
                         </h1>
-                        <p onClick={() => setOrder(item._id)}>{index}</p>
-                        {order == item._id &&
+                        <p onClick={() => setOrder({ id: item._id, isActive: !order.isActive })}>Index` {index}</p>
+                        {order.id == item._id && order.isActive &&
                             <form onSubmit={e => changeOrderQuestion(item._id, e)}>
                                 <Input
                                     type='text'
@@ -80,8 +90,6 @@ const HelpGeneral = props => {
                                 />
                             </form>
                         }
-                        <button onClick={() => deleteQuest(item._id)}>Delete</button>
-                        <button onClick={() => isEdit({ id: item._id, isOpen: !edit.isOpen })}>Edit</button>
                         {edit.id == item._id && edit.isOpen &&
                             <form onSubmit={(e) => editQuest(item._id, e)}>
                                 <Input
@@ -104,6 +112,15 @@ const HelpGeneral = props => {
                                     value='SAVE'
                                 />
                             </form>}
+                        <div className='HelpGeneral-Item-Buttons'>
+                            <Button
+                                value='Delete'
+                                onClick={() => deleteQuest(item._id)}
+                                className='delete' />
+                            <Button
+                                value='Edit'
+                                onClick={() => isEdit({ id: item._id, isOpen: !edit.isOpen })} />
+                        </div>
                     </div>
                     {item._id == id.id && id.isOpen &&
                         <p>{item.answere}</p>
@@ -115,7 +132,7 @@ const HelpGeneral = props => {
                 query: props.id
             }}
             >
-                <button>Add Question</button>
+                <Button value='Add Question' />
             </Link>
         </section>
     )
