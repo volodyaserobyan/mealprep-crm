@@ -5,7 +5,7 @@ import React, {
 import { Input } from '../../Form'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import { postCategoriesHelpCenter } from '../../../action/Action'
+import { postCategoriesHelpCenter, resetHelpPost } from '../../../action/Action'
 import { HELPCENTERCATGURL } from '../../../const/ConstUrl'
 import './AddHelp.scss'
 
@@ -57,7 +57,6 @@ const AddHelp = props => {
             }
             props.postCategoriesHelp(`${HELPCENTERCATGURL}/${id}/questions`, sendObj)
         }
-
     }
 
     useEffect(() => {
@@ -69,6 +68,10 @@ const AddHelp = props => {
             }
         }
     }, [props.helpPost])
+
+    useEffect(() => {
+        return () => props.reset()
+    })
 
     if (isSuccess) {
         return (
@@ -139,7 +142,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        postCategoriesHelp: (url, body) => dispatch(postCategoriesHelpCenter(url, body))
+        postCategoriesHelp: (url, body) => dispatch(postCategoriesHelpCenter(url, body)),
+        reset: () => dispatch(resetHelpPost())
     }
 }
 

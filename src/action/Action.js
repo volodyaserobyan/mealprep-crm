@@ -106,6 +106,12 @@ export const patchOrderHelpCenter = (url, body) => {
     }
 }
 
+export const resetHelpPost = () => {
+    return {
+        type: 'RESET_HELPPOST'
+    }
+}
+
 export const deleteQuestionsHelpCenter = url => {
     return dispatch => {
         dispatch({

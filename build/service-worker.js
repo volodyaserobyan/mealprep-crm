@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/projects/react/mealprep-crm/build/precache-manifest.172b56c64555daace9859c487894ef90.js"
+  "/projects/react/mealprep-crm/build/precache-manifest.2e3c24dffbed1370bc60d57db7e99c62.js"
 );
 
 self.addEventListener('message', (event) => {
