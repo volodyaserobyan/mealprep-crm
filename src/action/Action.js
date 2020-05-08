@@ -1,5 +1,6 @@
 import * as All from '../const/ConstTypes'
 
+///////////////////////HELP/////////////////////
 export const getCategoriesHelpCenter = url => {
     return dispatch => {
         dispatch({
@@ -132,6 +133,91 @@ export const deleteQuestionsHelpCenter = url => {
             .catch(error => {
                 dispatch({
                     type: All.ERRORHELP,
+                    data: error
+                })
+            })
+    }
+}
+
+/////////////BLOG//////////////////
+
+export const getArticles = (url, isSimilarArticle) => {
+    return dispatch => {
+        dispatch({
+            type: All.FETCHBLOG
+        });
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(response => response.json())
+            .then(getArticles => {
+                isSimilarArticle ?
+                    dispatch({
+                        type: All.GETSIMILARARTICLES,
+                        getArticlesSimilar: getArticles
+                    }) :
+                    dispatch({
+                        type: All.GETARTICLES,
+                        getArticles: getArticles
+                    })
+            })
+            .catch(error => {
+                dispatch({
+                    type: All.ERRORBLOG,
+                    data: error
+                })
+            })
+    }
+}
+
+export const getBlogKinds = url => {
+    return dispatch => {
+        dispatch({
+            type: All.FETCHBLOG
+        });
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(response => response.json())
+            .then(getKinds => {
+                dispatch({
+                    type: All.GETKINDS,
+                    getKinds: getKinds
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: All.ERRORBLOG,
+                    data: error
+                })
+            })
+    }
+}
+
+export const getBlogKindsCount = url => {
+    return dispatch => {
+        dispatch({
+            type: All.FETCHBLOG
+        });
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(response => response.json())
+            .then(getKindsCount => {
+                dispatch({
+                    type: All.GETKINDSCOUNT,
+                    getKindsCount: getKindsCount
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: All.ERRORBLOG,
                     data: error
                 })
             })

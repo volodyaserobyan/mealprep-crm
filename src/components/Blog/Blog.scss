@@ -1,0 +1,115 @@
+.Blog {
+    width: 100%;
+    background: #e5e5e5;
+
+    > nav {
+        height: 50px;
+        width: 100%;
+        border-bottom: 1px solid black;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 4px 16px;
+        
+        >h1 {
+            font-size: 24px;
+        }
+
+        .addblog {
+            width: 100px;
+            margin-top: 0px;
+        }
+    }
+
+    &-Cont {
+        padding: 100px 0px;
+
+        &-Title {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            h1 {
+                font-style: normal;
+                font-weight: bold;
+                font-size: 42px;
+                line-height: 48px;
+                text-align: center;
+                color: #161616;
+                margin-bottom: 50px;
+            }
+
+            &_content {
+                width: 100%;
+                max-width: 621px;
+                display: flex;
+                justify-content: space-between;
+                > div {
+                    display: flex;
+                    cursor: pointer;
+                    p {
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 13px;
+                        line-height: 16px;
+                        margin-left: 4px;
+                        color: rgba(22, 22, 22, 0.74);
+                    }
+                }
+            }
+        }
+
+        &-Wrap {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 48px;
+            &_item {
+                width: 392px;
+                height: 450px;
+                // margin-left: 24px;
+                flex: 0 0 33%;
+                &_1 {
+                    border: 1px solid red;
+                    background: white;
+                    height: 100%;
+                    width: 100%;
+                    margin-left: 24px;
+                }
+            }
+        }
+
+        button {
+            border: 0;
+            display: block;
+            margin: 12px auto 0;
+            padding: 12px 26px;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 16px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #ffffff;
+            background: rgba(22, 22, 22, 0.22);
+            border-radius: 2px;
+        }
+    }
+}
+
+.User-Photo {
+    width: 30px;
+    border-radius: 50%;
+}
+
+.isActiveBlog {
+    color: #161616 !important;
+    border-bottom: 1px solid #f58436;
+}
+
+@media screen and (max-width: 545px) {
+    .Blog-Cont-Title_content {
+        display: flex;
+        flex-direction: column;
+    }
+}

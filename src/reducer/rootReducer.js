@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
 import { helpReducer } from './helpReducer'
+import { blogReducer } from './blogReducer'
 
 const appReducer = combineReducers({
-    helpReducer
+    helpReducer,
+    blogReducer
 })
 
 const rootReducer = (state, action) => {

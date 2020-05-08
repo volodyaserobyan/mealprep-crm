@@ -1,3 +1,4 @@
+////////////HELP//////////////
 export const FETCHHELP = 'FETCH_HELP'
 export const GETCATEGORIESHELP = 'GET_HELP_CAT'
 export const POSTCATEGORIESHELP = 'POST_HELP_CAT'
@@ -6,3 +7,11 @@ export const PATCHORDERHELP = 'PATCH_ORDER_HELP'
 export const DELETECATEGORIESHELP = 'DELETE_HELP_CAT'
 export const DELETEQUESTIONSHELP = 'DELETE_QUEST_HELP'
 export const ERRORHELP = 'ERROR_HELP'
+///////////BLOG////////////
+export const FETCHBLOG = 'FETCH_BLOG'
+export const GETARTICLES = 'GET_ARTICLES'
+export const GETSIMILARARTICLES = 'GET_SIMILARARTICLES'
+export const GETKINDS = 'GET_KINDS'
+export const GETKINDSCOUNT = 'GET_KINDS_COUNT'
+
+export const ERRORBLOG = 'ERROR_BLOG'

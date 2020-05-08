@@ -1,0 +1,112 @@
+.Blog-Item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 400px;
+    max-width: 390px;
+    padding: 12px;
+  
+    &_img {
+      height: 245px;
+      width: 100%;
+      border-radius: 4px 4px 0px 0px;
+      overflow: hidden;
+  
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  
+    &-Wrapper {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      padding-top: 16px;
+      padding-right: 24px;
+      padding-left: 24px;
+      padding-bottom: 24px;
+      background: #ffffff;
+      box-shadow: 0px 8px 32px rgba(22, 22, 22, 0.05);
+      border-radius: 4px;
+      width: 100%;
+  
+      &-Kinds {
+        width: 100%;
+        display: flex;
+  
+        > p {
+          margin-left: 12px;
+  
+          &:first-child {
+            margin-left: 0px;
+          }
+        }
+      }
+  
+      &_type {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 16px;
+        color: #f58436;
+      }
+  
+      &_title {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 28px;
+        margin-top: 12px;
+        color: #161616;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+  
+      &_context {
+        font-style: normal;
+        font-weight: normal;
+        margin-top: 12px;
+        font-size: 13px;
+        line-height: 20px;
+        color: rgba(22, 22, 22, 0.74);
+        -webkit-line-clamp: 3;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+  
+      &_date {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 12px;
+  
+        > p {
+          font-style: normal;
+          font-weight: 500;
+          font-size: 13px;
+          line-height: 16px;
+          color: rgba(22, 22, 22, 0.48);
+        }
+  
+        &_message {
+          display: flex;
+  
+          > p {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 16px;
+            margin-left: 8px;
+            color: rgba(22, 22, 22, 0.48);
+          }
+        }
+      }
+    }
+  }
+  
