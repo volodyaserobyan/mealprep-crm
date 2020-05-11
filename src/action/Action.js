@@ -172,6 +172,39 @@ export const getArticles = (url, isSimilarArticle) => {
     }
 }
 
+export const postArticles = (url, body) => {
+    return dispatch => {
+        dispatch({
+            type: All.FETCHBLOG
+        });
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        }).then(response => response.json())
+            .then(postArticles => {
+                dispatch({
+                    type: All.POSTARTICLE,
+                    postArticles: postArticles
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: All.ERRORBLOG,
+                    data: error
+                })
+            })
+    }
+}
+
+export const resetPostArticles = () => {
+    return {
+        type: All.RESETPOST
+    }
+}
+
 export const getBlogKinds = url => {
     return dispatch => {
         dispatch({
@@ -221,5 +254,37 @@ export const getBlogKindsCount = url => {
                     data: error
                 })
             })
+    }
+}
+
+export const deleteBlog = url => {
+    return dispatch => {
+        dispatch({
+            type: All.FETCHBLOG
+        });
+        fetch(url, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(response => response.json())
+            .then(deleteBlog => {
+                dispatch({
+                    type: All.DELETEBLOG,
+                    deleteBlog: deleteBlog
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: All.ERRORBLOG,
+                    data: error
+                })
+            })
+    }
+}
+
+export const deleteReset = () => {
+    return {
+        type: All.RESETDELETE
     }
 }

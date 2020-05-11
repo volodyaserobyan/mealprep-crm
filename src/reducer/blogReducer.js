@@ -3,7 +3,9 @@ import {
     GETARTICLES,
     GETSIMILARARTICLES,
     GETKINDS,
-    GETKINDSCOUNT
+    GETKINDSCOUNT,
+    POSTARTICLE,
+    DELETEBLOG
 } from '../const/ConstTypes'
 
 const INITIAL_STATE = { isFetching: null };
@@ -24,10 +26,24 @@ export const blogReducer = (state = INITIAL_STATE, action) => {
                 isFetching: false
             }
         }
+        case POSTARTICLE: {
+            return {
+                ...state,
+                postArticles: action.postArticles,
+                isFetching: false
+            }
+        }
         case GETSIMILARARTICLES: {
             return {
                 ...state,
                 getArticlesSimilar: action.getArticles,
+                isFetching: false
+            }
+        }
+        case DELETEBLOG: {
+            return {
+                ...state,
+                deleteBlog: action.deleteBlog,
                 isFetching: false
             }
         }

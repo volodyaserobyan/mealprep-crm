@@ -14,7 +14,7 @@ const Aside = props => {
                         <li>Help</li>
                     </NavLink>
                     <NavLink to={{
-                        pathname: `${process.env.PUBLIC_URL}/dashboard/blog`
+                        pathname: `${process.env.PUBLIC_URL}/dashboard/blog/all`
                     }}>
                         <li>Blog</li>
                     </NavLink>

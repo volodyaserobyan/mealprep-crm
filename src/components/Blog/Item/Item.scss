@@ -5,6 +5,7 @@
     flex-direction: column;
     min-height: 400px;
     max-width: 390px;
+    min-width: 390px;
     padding: 12px;
   
     &_img {
@@ -107,6 +108,12 @@
           }
         }
       }
+    }
+
+    &-Button {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
     }
   }
   

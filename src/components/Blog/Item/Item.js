@@ -1,5 +1,9 @@
 import React from 'react'
 import messageItem from '../../../assets/Images/VectorMessage.svg'
+import { Button } from '../../Form'
+import { connect } from 'react-redux'
+import { deleteBlog } from '../../../action/Action'
+import { BLOGURL } from '../../../const/ConstUrl'
 import './Item.scss'
 
 const Item = props => {
@@ -31,8 +35,23 @@ const Item = props => {
                     </div>
                 </div>
             </div>
+            <div className='Blog-Item-Button'>
+                <Button
+                    value='Delete'
+                    className='delete'
+                    onClick={() => props.deleteBlog(`${BLOGURL}/articles/${props.item._id}`)} />
+                <Button
+                    value='Edit'
+                />
+            </div>
         </div>
     )
 }
 
-export default Item
+const mapDispatchToProps = dispatch => {
+    return {
+        deleteBlog: url => dispatch(deleteBlog(url))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Item)

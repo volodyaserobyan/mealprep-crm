@@ -1,6 +1,7 @@
 .Blog {
     width: 100%;
     background: #e5e5e5;
+    position: relative;
 
     > nav {
         height: 50px;
@@ -78,7 +79,7 @@
             }
         }
 
-        button {
+        &-Button {
             border: 0;
             display: block;
             margin: 12px auto 0;

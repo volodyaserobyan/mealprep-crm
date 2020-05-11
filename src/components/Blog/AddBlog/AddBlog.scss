@@ -1,0 +1,14 @@
+.AddBlog {
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 50px);
+    background-color: rgba(64, 175, 70, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-Cont {
+        padding: 50px;
+        background: rgba(255, 255, 255, 0.8);
+    }
+}
